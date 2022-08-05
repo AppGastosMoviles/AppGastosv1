@@ -12,4 +12,12 @@
     <string name="nombre">Nombre</string>
     <string name="telefono">Teléfono</string>
     <string name="repita_contraseña">Repita contraseña</string>
+    <string name="home">Home</string>
+    <string name="hola">Hola</string>
+    <string name="nombre_perfil">Edwin</string>
+    <string name="gestion_de_datos">Gestion de datos</string>
+    <string name="estadisticas">Estadisticas</string>
+    <string name="gastos_totales">Gastos totales</string>
+    <string name="dinero_total">$ 30\'000.000</string>
+    <string name="agregar_gasto">Agregar gasto</string>
 </resources>
