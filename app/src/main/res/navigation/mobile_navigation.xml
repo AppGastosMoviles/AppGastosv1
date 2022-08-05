@@ -6,22 +6,22 @@
     app:startDestination="@id/navigation_login">
 
     <fragment
-        android:id="@+id/navigation_list"
-        android:name="com.sebastianb.myapplication.ui.list.ListFragment"
+        android:id="@+id/navigation_home"
+        android:name="com.sebastianb.myapplication.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.sebastianb.myapplication.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_categoria"
+        android:name="com.sebastianb.myapplication.ui.categoria.CategoriaFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_categoria" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.sebastianb.myapplication.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_gastosrecientes"
+        android:name="com.sebastianb.myapplication.ui.gastosrecientes.GastosrecientesFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_gastosrecientes" />
     <fragment
         android:id="@+id/navigation_login"
         android:name="com.sebastianb.myapplication.ui.login.LoginFragment"
@@ -33,7 +33,7 @@
             app:destination="@id/navigation_singup" />
         <action
             android:id="@+id/action_navigation_login_to_navigation_list"
-            app:destination="@id/navigation_list" />
+            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/navigation_singup"
@@ -45,4 +45,14 @@
             android:id="@+id/action_navigation_singup_to_navigation_login"
             app:destination="@id/navigation_login" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_estadisticas"
+        android:name="com.sebastianb.myapplication.ui.estadisticas.EstadisticasFragment"
+        android:label="fragment_estadisticas"
+        tools:layout="@layout/fragment_estadisticas" />
+    <fragment
+        android:id="@+id/navigation_cuenta"
+        android:name="com.sebastianb.myapplication.ui.perfil.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
 </navigation>

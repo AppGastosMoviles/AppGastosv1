@@ -20,4 +20,7 @@
     <string name="gastos_totales">Gastos totales</string>
     <string name="dinero_total">$ 30\'000.000</string>
     <string name="agregar_gasto">Agregar gasto</string>
+    <string name="categoria">Categorias</string>
+    <string name="gastos_recientes">Gastos recientes</string>
+    <string name="cuenta">Cuenta</string>
 </resources>
