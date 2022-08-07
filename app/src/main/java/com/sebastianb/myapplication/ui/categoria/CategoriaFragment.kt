@@ -5,39 +5,54 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.sebastianb.myapplication.databinding.FragmentCategoriaBinding
+import com.sebastianb.myapplication.databinding.FragmentSignUpBinding
+import com.sebastianb.myapplication.ui.signup.SignUpFragmentDirections
+import com.sebastianb.myapplication.ui.signup.SignUpViewModel
 
 
 class CategoriaFragment : Fragment() {
 
-    private var _binding: FragmentCategoriaBinding? = null
+    private lateinit var categoriaBinding: FragmentCategoriaBinding
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var categoriaViewModel: CategoriaViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(CategoriaViewModel::class.java)
+        categoriaBinding = FragmentCategoriaBinding.inflate(inflater, container, false)
+        categoriaViewModel = ViewModelProvider(this)[CategoriaViewModel::class.java]
 
-        _binding = FragmentCategoriaBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        categoriaBinding.alimentacionButton.setOnClickListener {
+            findNavController().navigate(CategoriaFragmentDirections.actionNavigationCategoriaToAlimentacionFragment())
         }
-        return root
+
+        categoriaBinding.indumentariaButton.setOnClickListener {
+            findNavController().navigate(CategoriaFragmentDirections.actionNavigationCategoriaToIndumentariaFragment())
+        }
+
+        categoriaBinding.cuidadopersonalButton.setOnClickListener {
+            findNavController().navigate(CategoriaFragmentDirections.actionNavigationCategoriaToCuidadopersonalFragment())
+        }
+
+        categoriaBinding.entretenimientoButton.setOnClickListener {
+            findNavController().navigate(CategoriaFragmentDirections.actionNavigationCategoriaToEntretenimientoFragment())
+        }
+
+        categoriaBinding.otrosButton.setOnClickListener {
+            findNavController().navigate(CategoriaFragmentDirections.actionNavigationCategoriaToOtrosFragment())
+        }
+
+        return categoriaBinding.root
+    }
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar!!.hide()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

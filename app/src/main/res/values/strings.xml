@@ -23,4 +23,16 @@
     <string name="categoria">Categorias</string>
     <string name="gastos_recientes">Gastos recientes</string>
     <string name="cuenta">Cuenta</string>
+    <string name="elige">Elige tu</string>
+    <string name="categoria_">Categoria</string>
+    <string name="alimentacion">Alimentación</string>
+    <string name="indumentaria">Indumentaria</string>
+    <string name="cuidado_personal">Cuidado Personal</string>
+    <string name="entretenimiento">Entretenimiento</string>
+    <string name="otros">Otros</string>
+    <string name="producto">Producto</string>
+    <string name="fecha">Fecha</string>
+    <string name="editar_perfil">Editar perfil</string>
+    <string name="cerrar_sesion">Cerrar sesion</string>
+    <string name="guardar">Guardar</string>
 </resources>
