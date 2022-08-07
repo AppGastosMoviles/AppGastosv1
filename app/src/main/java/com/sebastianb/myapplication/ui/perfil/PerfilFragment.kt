@@ -6,28 +6,35 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sebastianb.myapplication.R
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
+import com.sebastianb.myapplication.databinding.FragmentPerfilBinding
+
 
 class PerfilFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = PerfilFragment()
-    }
-
-    private lateinit var viewModel: PerfilViewModel
+    private lateinit var perfilBinding: FragmentPerfilBinding
+    private lateinit var perfilViewModel: PerfilViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_perfil, container, false)
+    ): View {
+        perfilBinding = FragmentPerfilBinding.inflate(inflater, container, false)
+        perfilViewModel = ViewModelProvider(this)[PerfilViewModel::class.java]
+
+        perfilBinding.editarButton.setOnClickListener {
+            findNavController().navigate(PerfilFragmentDirections.actionNavigationCuentaToEditarperfilFragment())
+        }
+        perfilBinding.cerrarButton.setOnClickListener {
+            findNavController().navigate(PerfilFragmentDirections.actionNavigationCuentaToNavigationLogin())
+        }
+        return perfilBinding.root
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PerfilViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar!!.hide()
     }
 
 }

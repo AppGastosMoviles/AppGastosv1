@@ -15,7 +15,23 @@
         android:id="@+id/navigation_categoria"
         android:name="com.sebastianb.myapplication.ui.categoria.CategoriaFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_categoria" />
+        tools:layout="@layout/fragment_categoria" >
+        <action
+            android:id="@+id/action_navigation_categoria_to_alimentacionFragment"
+            app:destination="@id/navigation_alimentacion" />
+        <action
+            android:id="@+id/action_navigation_categoria_to_cuidadopersonalFragment"
+            app:destination="@id/navigation_cuidadopersonal" />
+        <action
+            android:id="@+id/action_navigation_categoria_to_entretenimientoFragment"
+            app:destination="@id/navigation_entretenimiento" />
+        <action
+            android:id="@+id/action_navigation_categoria_to_indumentariaFragment"
+            app:destination="@id/navigation_indumentaria" />
+        <action
+            android:id="@+id/action_navigation_categoria_to_otrosFragment"
+            app:destination="@id/navigation_otros" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_gastosrecientes"
@@ -54,5 +70,46 @@
         android:id="@+id/navigation_cuenta"
         android:name="com.sebastianb.myapplication.ui.perfil.PerfilFragment"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_navigation_cuenta_to_editarperfilFragment"
+            app:destination="@id/editarperfilFragment" />
+        <action
+            android:id="@+id/action_navigation_cuenta_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_alimentacion"
+        android:name="com.sebastianb.myapplication.ui.alimentacion.AlimentacionFragment"
+        android:label="fragment_alimentacion"
+        tools:layout="@layout/fragment_alimentacion" />
+    <fragment
+        android:id="@+id/navigation_cuidadopersonal"
+        android:name="com.sebastianb.myapplication.ui.cuidadopersonal.CuidadopersonalFragment"
+        android:label="fragment_cuidadopersonal"
+        tools:layout="@layout/fragment_cuidadopersonal" />
+    <fragment
+        android:id="@+id/navigation_entretenimiento"
+        android:name="com.sebastianb.myapplication.ui.entretenimiento.EntretenimientoFragment"
+        android:label="fragment_entretenimiento"
+        tools:layout="@layout/fragment_entretenimiento" />
+    <fragment
+        android:id="@+id/navigation_indumentaria"
+        android:name="com.sebastianb.myapplication.ui.indumentaria.IndumentariaFragment"
+        android:label="fragment_indumentaria"
+        tools:layout="@layout/fragment_indumentaria" />
+    <fragment
+        android:id="@+id/navigation_otros"
+        android:name="com.sebastianb.myapplication.ui.otros.OtrosFragment"
+        android:label="fragment_otros"
+        tools:layout="@layout/fragment_otros" />
+    <fragment
+        android:id="@+id/editarperfilFragment"
+        android:name="com.sebastianb.myapplication.ui.editarperfil.EditarperfilFragment"
+        android:label="fragment_editarperfil"
+        tools:layout="@layout/fragment_editarperfil" >
+        <action
+            android:id="@+id/action_editarperfilFragment_to_navigation_cuenta"
+            app:destination="@id/navigation_cuenta" />
+    </fragment>
 </navigation>
