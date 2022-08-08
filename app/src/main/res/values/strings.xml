@@ -34,11 +34,9 @@
         <item>Hogar</item>
         <item>Alimentación</item>
         <item>Transporte</item>
-        <item>Ropa</item>
-        <item>Ocio</item>
-        <item>Salud</item>
-        <item>Educación</item>
-
+        <item>Indumentaria</item>
+        <item>Entretenimiento</item>
+        <item>Cuidado personal</item>
         <item>Otros</item>
     </string-array>
 
