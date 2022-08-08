@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.sebastianb.myapplication.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_agregarGastoFragment"
+            app:destination="@id/navigation_agregargasto" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_categoria"
@@ -111,5 +115,14 @@
         <action
             android:id="@+id/action_editarperfilFragment_to_navigation_cuenta"
             app:destination="@id/navigation_cuenta" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_agregargasto"
+        android:name="com.sebastianb.myapplication.ui.agregargasto.AgregarGastoFragment"
+        android:label="fragment_agregar_gasto"
+        tools:layout="@layout/fragment_agregar_gasto" >
+        <action
+            android:id="@+id/action_agregarGastoFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
 </navigation>

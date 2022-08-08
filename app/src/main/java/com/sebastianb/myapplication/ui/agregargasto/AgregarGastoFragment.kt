@@ -10,17 +10,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.navigation.fragment.findNavController
 import com.sebastianb.myapplication.R
 import com.sebastianb.myapplication.databinding.FragmentAgregarGastoBinding
 import java.util.*
 
 class AgregarGastoFragment : Fragment() {
 
-    private var _binding: FragmentAgregarGastoBinding? = null
+   private lateinit var agregarGastoBinding:FragmentAgregarGastoBinding
+   private lateinit var agregarGastoViewModel: AgregarGastoViewModel
 
-    private val binding get() = _binding!!
 
     private var fechanacimiento: String = ""
     private var cal = Calendar.getInstance()
@@ -32,14 +32,8 @@ class AgregarGastoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val dashboardViewModel = ViewModelProvider(this)[AgregarGastoViewModel::class.java]
-        _binding = FragmentAgregarGastoBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.tvTitle
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        agregarGastoViewModel=ViewModelProvider(this)[AgregarGastoViewModel::class.java]
+        agregarGastoBinding = FragmentAgregarGastoBinding.inflate(inflater, container, false)
 
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             cal.set(Calendar.YEAR, year)
@@ -47,10 +41,10 @@ class AgregarGastoFragment : Fragment() {
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             val formato = SimpleDateFormat("dd/MM/yyyy", Locale.US)
             fechanacimiento = formato.format(cal.time).toString()
-            binding.dateEditText.setText(fechanacimiento)
+            agregarGastoBinding.dateEditText.setText(fechanacimiento)
         }
 
-        binding.dateEditText.setOnClickListener {
+        agregarGastoBinding.dateEditText.setOnClickListener {
 
             DatePickerDialog(
                 requireContext(),
@@ -67,19 +61,18 @@ class AgregarGastoFragment : Fragment() {
         val adapter = ArrayAdapter(requireContext(), R.layout.list_item, categorias)
 
         //Agregamos el adapter al autoCompleteTextView
-        with(binding.atvCategorias) {
+        with(agregarGastoBinding.atvCategorias) {
             setAdapter(adapter)
         }
 
-        return root
+        agregarGastoBinding.btnAgregarGasto.setOnClickListener {
+            findNavController().navigate(AgregarGastoFragmentDirections.actionAgregarGastoFragmentToNavigationHome())
+        }
+        return agregarGastoBinding.root
     }
 
 
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
 
-    }
 
 }

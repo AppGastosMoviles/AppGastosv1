@@ -33,6 +33,14 @@
     <string name="button_color_alimentacion">Button</string>
     <string name="fecha_gasto">Fecha del gasto</string>
     <string name="descripcion">DESCRIPCION</string>
+    <string name="alimentacion">Alimentacion</string>
+    <string name="producto">Producto</string>
+    <string name="cuidado_personal">Cuidado personal</string>
+    <string name="entretenimiento">Entretenimiento</string>
+    <string name="indumentaria">Indumentaria</string>
+    <string name="otros">Otros</string>
+    <string name="elige">Elige</string>
+    <string name="categoria_">Categoria</string>
 
     <string-array name="lista_categorias">
         <item>Hogar</item>
