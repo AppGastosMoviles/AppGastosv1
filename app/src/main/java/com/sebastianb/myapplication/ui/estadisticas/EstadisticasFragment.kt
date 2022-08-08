@@ -22,7 +22,7 @@ class EstadisticasFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         estadisticasBinding = FragmentEstadisticasBinding.inflate(inflater, container, false)
         estadisticasViewModel = ViewModelProvider(this)[EstadisticasViewModel::class.java]
         setupPieChart()
@@ -58,7 +58,7 @@ class EstadisticasFragment : Fragment() {
         pieData.setDrawValues(true)
 
         estadisticasBinding.pieChart.description.isEnabled=false
-        
+
         estadisticasBinding.pieChart.data = pieData
 
     }
