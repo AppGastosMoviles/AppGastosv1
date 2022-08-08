@@ -20,19 +20,26 @@
     <string name="gastos_totales">Gastos totales</string>
     <string name="dinero_total">$ 30\'000.000</string>
     <string name="agregar_gasto">Agregar gasto</string>
-    <string name="categoria">Categorias</string>
+    <string name="categoria">Categoria</string>
     <string name="gastos_recientes">Gastos recientes</string>
     <string name="cuenta">Cuenta</string>
-    <string name="elige">Elige tu</string>
-    <string name="categoria_">Categoria</string>
-    <string name="alimentacion">Alimentación</string>
-    <string name="indumentaria">Indumentaria</string>
-    <string name="cuidado_personal">Cuidado Personal</string>
-    <string name="entretenimiento">Entretenimiento</string>
-    <string name="otros">Otros</string>
-    <string name="producto">Producto</string>
+    <string name="gasto">$0.00</string>
+    <string name="lista_gastos">Lista de gastos</string>
+    <string name="categorias">Categorias</string>
     <string name="fecha">Fecha</string>
-    <string name="editar_perfil">Editar perfil</string>
-    <string name="cerrar_sesion">Cerrar sesion</string>
-    <string name="guardar">Guardar</string>
+    <string name="fecha_gasto">Fecha del gasto</string>
+    <string name="descripcion">DESCRIPCION</string>
+
+    <string-array name="lista_categorias">
+        <item>Hogar</item>
+        <item>Alimentación</item>
+        <item>Transporte</item>
+        <item>Ropa</item>
+        <item>Ocio</item>
+        <item>Salud</item>
+        <item>Educación</item>
+
+        <item>Otros</item>
+    </string-array>
+
 </resources>
