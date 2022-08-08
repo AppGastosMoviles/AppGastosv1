@@ -1,32 +1,67 @@
 package com.sebastianb.myapplication.ui.estadisticas
 
-import androidx.lifecycle.ViewModelProvider
+
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 import com.sebastianb.myapplication.R
+import com.sebastianb.myapplication.databinding.FragmentEstadisticasBinding
+
 
 class EstadisticasFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = EstadisticasFragment()
-    }
-
-    private lateinit var viewModel: EstadisticasViewModel
+    private lateinit var estadisticasBinding: FragmentEstadisticasBinding
+    private lateinit var estadisticasViewModel: EstadisticasViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_estadisticas, container, false)
+        estadisticasBinding = FragmentEstadisticasBinding.inflate(inflater, container, false)
+        estadisticasViewModel = ViewModelProvider(this)[EstadisticasViewModel::class.java]
+        setupPieChart()
+
+        return estadisticasBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(EstadisticasViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun setupPieChart() {
+        val pieEntries = arrayListOf<PieEntry>()
+        pieEntries.add(PieEntry(30.0f,"Alimentacion"))
+        pieEntries.add(PieEntry(80.0f,"Indumentaria"))
+        pieEntries.add(PieEntry(20.0f,"Cuidado personal"))
+        pieEntries.add(PieEntry(38.0f,"Entretenimiento"))
+        pieEntries.add(PieEntry(65.0f,"otros"))
+
+
+
+        estadisticasBinding.pieChart.animateXY(1000, 1000)
+        val pieDataSet = PieDataSet(pieEntries,null)
+
+        pieDataSet.setColors(
+            resources.getColor(R.color.fondo),
+            resources.getColor(R.color.black),
+            resources.getColor(R.color.teal_200),
+            resources.getColor(R.color.teal_700),
+            resources.getColor(R.color.purple_200)
+        )
+
+
+        val pieData = PieData(pieDataSet)
+
+
+        pieData.setDrawValues(true)
+
+        estadisticasBinding.pieChart.description.isEnabled=false
+        
+        estadisticasBinding.pieChart.data = pieData
+
     }
+
 
 }
