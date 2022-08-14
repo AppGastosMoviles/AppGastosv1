@@ -6,27 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sebastianb.myapplication.R
+import com.sebastianb.myapplication.databinding.FragmentCuidadopersonalBinding
 
 class CuidadopersonalFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CuidadopersonalFragment()
-    }
-
-    private lateinit var viewModel: CuidadopersonalViewModel
+    private lateinit var cuidadopersonalBinding: FragmentCuidadopersonalBinding
+    private lateinit var cuidadopersonalViewModel: CuidadopersonalViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_cuidadopersonal, container, false)
+    ): View {
+        cuidadopersonalBinding=FragmentCuidadopersonalBinding.inflate(inflater,container,false)
+        cuidadopersonalViewModel=ViewModelProvider(this)[CuidadopersonalViewModel::class.java]
+        return cuidadopersonalBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CuidadopersonalViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }

@@ -6,27 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sebastianb.myapplication.R
+import com.sebastianb.myapplication.databinding.FragmentEntretenimientoBinding
 
 class EntretenimientoFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = EntretenimientoFragment()
-    }
-
-    private lateinit var viewModel: EntretenimientoViewModel
+    private lateinit var entretenimientoBinding: FragmentEntretenimientoBinding
+    private lateinit var entretenimientoViewModel: EntretenimientoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_entretenimiento, container, false)
+    ): View {
+        entretenimientoBinding=FragmentEntretenimientoBinding.inflate(inflater,container,false)
+        entretenimientoViewModel=ViewModelProvider(this)[EntretenimientoViewModel::class.java]
+        return entretenimientoBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(EntretenimientoViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }

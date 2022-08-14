@@ -6,27 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sebastianb.myapplication.R
+import com.sebastianb.myapplication.databinding.FragmentAlimentacionBinding
+
 
 class AlimentacionFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = AlimentacionFragment()
-    }
+    private lateinit var alimentacionBinding: FragmentAlimentacionBinding
+    private lateinit var alimentacionViewModel: AlimentacionViewModel
 
-    private lateinit var viewModel: AlimentacionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_alimentacion, container, false)
+    ): View {
+        alimentacionBinding=FragmentAlimentacionBinding.inflate(inflater,container,false)
+        alimentacionViewModel=ViewModelProvider(this)[AlimentacionViewModel::class.java]
+        return alimentacionBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AlimentacionViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }
