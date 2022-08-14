@@ -13,6 +13,15 @@
         <action
             android:id="@+id/action_navigation_home_to_agregarGastoFragment"
             app:destination="@id/navigation_agregargasto" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_estadisticas"
+            app:destination="@id/navigation_estadisticas" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_gastosrecientes"
+            app:destination="@id/navigation_gastosrecientes" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_cuenta"
+            app:destination="@id/navigation_cuenta" />
     </fragment>
 
     <fragment

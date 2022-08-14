@@ -3,14 +3,15 @@ package com.sebastianb.myapplication.ui.agregargasto
 import android.app.DatePickerDialog
 import android.icu.text.SimpleDateFormat
 import android.os.Build
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sebastianb.myapplication.R
 import com.sebastianb.myapplication.databinding.FragmentAgregarGastoBinding
@@ -18,8 +19,8 @@ import java.util.*
 
 class AgregarGastoFragment : Fragment() {
 
-   private lateinit var agregarGastoBinding:FragmentAgregarGastoBinding
-   private lateinit var agregarGastoViewModel: AgregarGastoViewModel
+    private lateinit var agregarGastoBinding: FragmentAgregarGastoBinding
+    private lateinit var agregarGastoViewModel: AgregarGastoViewModel
 
 
     private var fechanacimiento: String = ""
@@ -32,8 +33,11 @@ class AgregarGastoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        agregarGastoViewModel=ViewModelProvider(this)[AgregarGastoViewModel::class.java]
+        agregarGastoViewModel = ViewModelProvider(this)[AgregarGastoViewModel::class.java]
         agregarGastoBinding = FragmentAgregarGastoBinding.inflate(inflater, container, false)
+        agregarGastoViewModel.errorMsg.observe(viewLifecycleOwner) { msg ->
+            showErrorMessage(msg)
+        }
 
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             cal.set(Calendar.YEAR, year)
@@ -66,13 +70,35 @@ class AgregarGastoFragment : Fragment() {
         }
 
         agregarGastoBinding.btnAgregarGasto.setOnClickListener {
-            findNavController().navigate(AgregarGastoFragmentDirections.actionAgregarGastoFragmentToNavigationHome())
+            agregarGastoViewModel.validateFields(
+                agregarGastoBinding.etDescripcion.text.toString(),
+                agregarGastoBinding.etGasto.text.toString(),
+                agregarGastoBinding.establecimientoEditText.text.toString(),
+                agregarGastoBinding.atvCategorias.text.toString(),
+                agregarGastoBinding.dateEditText.text.toString()
+            )
+            goToLogin(
+                agregarGastoViewModel.validateFields(
+                    agregarGastoBinding.etDescripcion.text.toString(),
+                    agregarGastoBinding.etGasto.text.toString(),
+                    agregarGastoBinding.establecimientoEditText.text.toString(),
+                    agregarGastoBinding.atvCategorias.text.toString(),
+                    agregarGastoBinding.dateEditText.text.toString()
+                )
+            )
+
         }
         return agregarGastoBinding.root
     }
 
+    private fun showErrorMessage(msg: String?) {
+        Toast.makeText(requireActivity(), msg, Toast.LENGTH_SHORT).show()
+    }
 
+    fun goToLogin(next: Int) {
+        if (next == 5)
+            findNavController().navigate(AgregarGastoFragmentDirections.actionAgregarGastoFragmentToNavigationHome())
 
-
+    }
 
 }

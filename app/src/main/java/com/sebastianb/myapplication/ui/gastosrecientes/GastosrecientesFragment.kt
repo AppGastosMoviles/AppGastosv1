@@ -11,29 +11,18 @@ import com.sebastianb.myapplication.databinding.FragmentGastosrecientesBinding
 
 class GastosrecientesFragment : Fragment() {
 
-    private var _binding: FragmentGastosrecientesBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var gastosrecientesBinding: FragmentGastosrecientesBinding
+    private lateinit var gastosrecientesViewModel: GastosrecientesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(GastosrecientesViewModel::class.java)
-
-        _binding = FragmentGastosrecientesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-
-        return root
+        gastosrecientesBinding=FragmentGastosrecientesBinding.inflate(inflater,container,false)
+        gastosrecientesViewModel=ViewModelProvider(this)[GastosrecientesViewModel::class.java]
+        return gastosrecientesBinding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 }

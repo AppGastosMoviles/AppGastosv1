@@ -6,27 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sebastianb.myapplication.R
+import com.sebastianb.myapplication.databinding.FragmentOtrosBinding
 
 class OtrosFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = OtrosFragment()
-    }
-
-    private lateinit var viewModel: OtrosViewModel
+   private lateinit var otrosBinding: FragmentOtrosBinding
+   private lateinit var otrosViewModel: OtrosViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_otros, container, false)
+    ): View {
+        otrosBinding=FragmentOtrosBinding.inflate(inflater,container,false)
+        otrosViewModel=ViewModelProvider(this)[OtrosViewModel::class.java]
+        return otrosBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(OtrosViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }
