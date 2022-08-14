@@ -25,6 +25,12 @@ class HomeFragment : Fragment() {
         homeBinding.agregarGastosButton.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToAgregarGastoFragment())
         }
+        homeBinding.estadisticasButton.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationEstadisticas())
+        }
+        homeBinding.gastosRecientesButton.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationGastosrecientes())
+        }
         return homeBinding.root
     }
 }

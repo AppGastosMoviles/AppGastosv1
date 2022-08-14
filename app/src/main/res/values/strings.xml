@@ -41,11 +41,10 @@
     <string name="otros">Otros</string>
     <string name="elige">Elige</string>
     <string name="categoria_">Categoria</string>
+    <string name="lugar">Establecimiento</string>
 
     <string-array name="lista_categorias">
-        <item>Hogar</item>
         <item>Alimentación</item>
-        <item>Transporte</item>
         <item>Indumentaria</item>
         <item>Entretenimiento</item>
         <item>Cuidado personal</item>
