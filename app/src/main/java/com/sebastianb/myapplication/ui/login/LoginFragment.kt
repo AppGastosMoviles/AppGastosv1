@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sebastianb.myapplication.databinding.FragmentLoginBinding
 import com.sebastianb.myapplication.databinding.FragmentSignUpBinding
+import com.sebastianb.myapplication.ui.signup.SignUpFragmentDirections
 import com.sebastianb.myapplication.ui.signup.SignUpViewModel
 
 
@@ -29,12 +30,14 @@ class LoginFragment : Fragment() {
 
         loginViewModel.errorMsg.observe(viewLifecycleOwner) { msg ->
             showErrorMessage(msg)
-
+        }
+        loginViewModel.loginSuccess.observe(viewLifecycleOwner) {
+            goToHome()
         }
 
         loginBinding.loginButton.setOnClickListener{
-            if (loginViewModel.validateFields(loginBinding.emailEditText.text.toString(),loginBinding.passwordEditText.text.toString())==3){
-            findNavController().navigate(LoginFragmentDirections.actionNavigationLoginToNavigationList())}
+            loginViewModel.validateFields(loginBinding.emailEditText.text.toString(),loginBinding.passwordEditText.text.toString())
+
 
         }
         loginBinding.registersButton.setOnClickListener{
@@ -44,6 +47,9 @@ class LoginFragment : Fragment() {
     }
     private fun showErrorMessage(msg: String?) {
         Toast.makeText(requireActivity(), msg, Toast.LENGTH_SHORT).show()
+    }
+    fun goToHome() {
+        findNavController().navigate(LoginFragmentDirections.actionNavigationLoginToNavigationList())
     }
     override fun onResume() {
         super.onResume()

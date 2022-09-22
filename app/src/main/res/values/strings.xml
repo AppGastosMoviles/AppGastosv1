@@ -42,6 +42,7 @@
     <string name="elige">Elige</string>
     <string name="categoria_">Categoria</string>
     <string name="lugar">Establecimiento</string>
+    <string name="eliminar">Eliminar</string>
 
     <string-array name="lista_categorias">
         <item>Alimentación</item>

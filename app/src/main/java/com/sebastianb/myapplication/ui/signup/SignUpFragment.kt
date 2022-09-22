@@ -29,6 +29,10 @@ class SignUpFragment : Fragment() {
 
         }
 
+        signUpViewModel.registerSuccess.observe(viewLifecycleOwner) {
+            goToLogin()
+
+        }
         with(signUpBinding) {
             registerButton.setOnClickListener {
                 signUpViewModel.validateFields(
@@ -38,32 +42,29 @@ class SignUpFragment : Fragment() {
                     passwordEditText.text.toString(),
                     passwordAgainEditText.text.toString()
                 )
-                goToLogin(
-                    signUpViewModel.validateFields(
-                        phoneEditText.text.toString(),
-                        nameEditText.text.toString(),
-                        emailEditText.text.toString(),
-                        passwordEditText.text.toString(),
-                        passwordAgainEditText.text.toString()
-                    ))
+
+
             }
 
             return signUpBinding.root
         }
     }
 
-    private fun showErrorMessage(msg: String?) {
-        Toast.makeText(requireActivity(), msg, Toast.LENGTH_SHORT).show()
-    }
-
-    fun goToLogin(next: Int) {
-        if (next ==7)
-            findNavController().navigate(SignUpFragmentDirections.actionNavigationSingupToNavigationLogin())
-
-    }
-
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity).supportActionBar!!.hide()
     }
+
+    private fun showErrorMessage(msg: String?) {
+
+        Toast.makeText(requireActivity(), msg, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun goToLogin() {
+
+        findNavController().navigate(SignUpFragmentDirections.actionNavigationSingupToNavigationLogin())
+
+    }
+
+
 }
