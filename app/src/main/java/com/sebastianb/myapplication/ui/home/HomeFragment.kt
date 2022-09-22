@@ -22,6 +22,15 @@ class HomeFragment : Fragment() {
         homeBinding = FragmentHomeBinding.inflate(inflater, container, false)
         homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
+        homeViewModel.validateData()
+        homeViewModel.userData.observe(viewLifecycleOwner){userData ->
+            homeBinding.textView4.text=userData}
+        homeViewModel.validateGastoData()
+        homeViewModel.gastosList.observe(viewLifecycleOwner){usergastosData ->
+            homeBinding.textViewgastostotales.text=usergastosData}
+
+
+
         homeBinding.agregarGastosButton.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToAgregarGastoFragment())
         }
@@ -31,6 +40,7 @@ class HomeFragment : Fragment() {
         homeBinding.gastosRecientesButton.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationGastosrecientes())
         }
+
         return homeBinding.root
     }
 }

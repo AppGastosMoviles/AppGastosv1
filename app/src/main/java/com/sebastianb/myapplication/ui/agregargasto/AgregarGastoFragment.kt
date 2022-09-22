@@ -38,6 +38,9 @@ class AgregarGastoFragment : Fragment() {
         agregarGastoViewModel.errorMsg.observe(viewLifecycleOwner) { msg ->
             showErrorMessage(msg)
         }
+        agregarGastoViewModel.createGastoSuccess.observe(viewLifecycleOwner){
+            goToHome()
+        }
 
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             cal.set(Calendar.YEAR, year)
@@ -77,15 +80,7 @@ class AgregarGastoFragment : Fragment() {
                 agregarGastoBinding.atvCategorias.text.toString(),
                 agregarGastoBinding.dateEditText.text.toString()
             )
-            goToLogin(
-                agregarGastoViewModel.validateFields(
-                    agregarGastoBinding.etDescripcion.text.toString(),
-                    agregarGastoBinding.etGasto.text.toString(),
-                    agregarGastoBinding.establecimientoEditText.text.toString(),
-                    agregarGastoBinding.atvCategorias.text.toString(),
-                    agregarGastoBinding.dateEditText.text.toString()
-                )
-            )
+
 
         }
         return agregarGastoBinding.root
@@ -95,8 +90,8 @@ class AgregarGastoFragment : Fragment() {
         Toast.makeText(requireActivity(), msg, Toast.LENGTH_SHORT).show()
     }
 
-    fun goToLogin(next: Int) {
-        if (next == 5)
+    fun goToHome() {
+
             findNavController().navigate(AgregarGastoFragmentDirections.actionAgregarGastoFragmentToNavigationHome())
 
     }

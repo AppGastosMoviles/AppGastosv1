@@ -23,15 +23,33 @@ class PerfilFragment : Fragment() {
         perfilBinding = FragmentPerfilBinding.inflate(inflater, container, false)
         perfilViewModel = ViewModelProvider(this)[PerfilViewModel::class.java]
 
+        perfilViewModel.validateNameData()
+        perfilViewModel.userNameData.observe(viewLifecycleOwner){usernameData ->
+            perfilBinding.textViewname.text=usernameData}
+
+        perfilViewModel.validateEmailData()
+        perfilViewModel.userEmailData.observe(viewLifecycleOwner){useremailData ->
+            perfilBinding.textViewemail.text=useremailData}
+
+        perfilViewModel.validatePhoneData()
+        perfilViewModel.userPhoneData.observe(viewLifecycleOwner){userphoneData ->
+            perfilBinding.textViewphone.text=userphoneData}
+
         perfilBinding.editarButton.setOnClickListener {
             findNavController().navigate(PerfilFragmentDirections.actionNavigationCuentaToEditarperfilFragment())
         }
         perfilBinding.cerrarButton.setOnClickListener {
-            findNavController().navigate(PerfilFragmentDirections.actionNavigationCuentaToNavigationLogin())
+            perfilViewModel.logOut()
+            goToLogin()
         }
+
+
         return perfilBinding.root
     }
 
+fun goToLogin(){
+    findNavController().navigate(PerfilFragmentDirections.actionNavigationCuentaToNavigationLogin())
+}
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity).supportActionBar!!.hide()

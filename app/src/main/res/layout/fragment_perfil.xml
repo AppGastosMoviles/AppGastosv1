@@ -46,40 +46,40 @@
         app:layout_constraintTop_toBottomOf="@+id/editar_button" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/textViewemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="254dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/email"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewname" />
 
     <TextView
-        android:id="@+id/textView33"
+        android:id="@+id/textViewphone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="254dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/telefono"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewemail" />
 
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/textViewname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="254dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/nombre"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -87,17 +87,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="254dp"
-        android:text="@string/gastos_totales"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView33" />
 </androidx.constraintlayout.widget.ConstraintLayout>
