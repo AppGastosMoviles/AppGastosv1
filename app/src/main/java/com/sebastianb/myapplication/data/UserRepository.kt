@@ -71,6 +71,10 @@ class UserRepository {
         }
 
     }
-    
+
+    suspend fun logOutUser(){
+            val result=auth.signOut()
+    }
+
 
 }

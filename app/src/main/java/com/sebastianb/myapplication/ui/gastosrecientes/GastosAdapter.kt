@@ -4,11 +4,17 @@ package com.sebastianb.myapplication.ui.gastosrecientes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import com.sebastianb.myapplication.R
+import com.sebastianb.myapplication.data.GastoRepository
 import com.sebastianb.myapplication.databinding.CardViewGastoItemBinding
 import com.sebastianb.myapplication.databinding.FragmentGastosrecientesBinding
 import com.sebastianb.myapplication.model.Gasto
+import kotlinx.coroutines.launch
+import androidx.lifecycle.viewModelScope
 
 
 class GastosAdapter(
@@ -26,6 +32,7 @@ class GastosAdapter(
         val gasto = gastoList[position]
         holder.bind(gasto)
 
+
     }
 
     override fun getItemCount(): Int = gastoList.size
@@ -37,16 +44,18 @@ class GastosAdapter(
     }
 
     class GastoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         private val binding = CardViewGastoItemBinding.bind(itemView)
 
         fun bind(gasto: Gasto) {
+
             with(binding) {
                 descripcionTextView.text = "Descripción: "+gasto.description
                 categoriaTextView.text = "Categoria: "+gasto.category
                 establecimientoTextView.text = "Establecimiento: "+gasto.establishment
                 valorTextView.text = "valor: $"+gasto.amount.toString()
                 fechaTextView.text = gasto.date
+
+
 
                /* if (gasto.category.toString() == "Alimentación") {
                     Picasso.get().load(R.mipmap.ic_alimentacion).into(imageView)

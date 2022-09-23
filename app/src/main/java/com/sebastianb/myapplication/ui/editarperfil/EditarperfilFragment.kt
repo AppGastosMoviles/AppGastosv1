@@ -35,13 +35,7 @@ class EditarperfilFragment : Fragment() {
                     emailEditText.text.toString(),
                     passwordEditText.text.toString(),
                 )
-                goToLogin(
-                    editarperfilViewModel.validateFields(
-                        phoneEditText.text.toString(),
-                        nameEditText.text.toString(),
-                        emailEditText.text.toString(),
-                        passwordEditText.text.toString()
-                    ))
+
             }
             return editarperfilBinding.root
         }

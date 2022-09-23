@@ -70,7 +70,7 @@ class GastosrecientesViewModel : ViewModel() {
 
 
 
-    fun deleteGasto() {
+   suspend fun deleteGasto() {
         viewModelScope.launch {
             val result = gastoRepository.deleteGasto(foundGastoToDelete)
             result.let { resourceRemote ->
