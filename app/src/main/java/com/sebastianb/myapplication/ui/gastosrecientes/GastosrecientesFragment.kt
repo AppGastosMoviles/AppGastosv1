@@ -64,5 +64,4 @@ class GastosrecientesFragment : Fragment() {
         return gastosrecientesBinding.root
     }
 
-
 }

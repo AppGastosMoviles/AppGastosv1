@@ -30,36 +30,7 @@ class EditarperfilViewModel : ViewModel() {
         else if (!PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()){
             _errormsg.value = "Ingrese un correo electronico valido"}
 
-        else {
-            viewModelScope.launch {
-                val result = userRepository.upda(email, password)
-                result.let { resourceRemote ->
-                    when (resourceRemote) {
-                        is ResourceRemote.Succes -> {
-                            user = User(result.data, name, email, telefono)
 
-
-                        }
-                        is ResourceRemote.Error -> {
-                            var msg = result.message
-                            when (result.message) {
-                                "The email address is already in use by another account." -> msg =
-                                    "Ya existe una cuenta con este correo."
-                                "The email address is badly formatted." -> msg =
-                                    "El email esta mal escrito."
-                                "A network error (such as timeout, interrupted connection or unreachable host) has ocurred." -> msg =
-                                    "No tiene conexion a internet"
-                            }
-                            _errormsg.postValue(msg)
-
-                        }
-                        else -> {
-                            //dont use
-                        }
-                    }
-                }
-            }
-        }
     }
     private fun updateUser(user: User) {
         viewModelScope.launch {

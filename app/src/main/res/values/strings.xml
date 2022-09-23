@@ -7,13 +7,13 @@
     <string name="contraseña">Contraseña</string>
     <string name="registrarse">Registrarse</string>
     <string name="tu_app_para_gestionar_tus_gastos">Tu app para gestionar tus gastos</string>
-    <string name="log_in">Log in</string>
+    <string name="log_in">Ingresar</string>
     <string name="registrar">Registrar</string>
     <string name="nombre">Nombre</string>
     <string name="telefono">Teléfono</string>
     <string name="repita_contraseña">Repita contraseña</string>
     <string name="home">Home</string>
-    <string name="hola">Hola</string>
+    <string name="hola">Bienvenido!!</string>
     <string name="nombre_perfil">Edwin</string>
     <string name="gestion_de_datos">Gestion de datos</string>
     <string name="estadisticas">Estadisticas</string>

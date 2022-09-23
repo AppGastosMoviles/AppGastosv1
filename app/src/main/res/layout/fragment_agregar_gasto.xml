@@ -57,12 +57,12 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
 
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="100dp"
             app:layout_constraintEnd_toStartOf="@id/date_edit_text"
+            app:layout_constraintStart_toStartOf="parent"
 
 
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
             <AutoCompleteTextView
                 android:id="@+id/atvCategorias"
@@ -74,13 +74,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/date_edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="106dp"
             android:layout_marginEnd="16dp"
             android:clickable="true"
             android:focusable="true"
@@ -90,9 +89,9 @@
             android:isScrollContainer="false"
             android:textAlignment="textEnd"
             android:textColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tiCategorias"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextContrastCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 
@@ -197,6 +196,18 @@
             android:hint="@string/lugar"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="227dp"
+        android:layout_height="231dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
+        android:src="@mipmap/ic_anadirh_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
