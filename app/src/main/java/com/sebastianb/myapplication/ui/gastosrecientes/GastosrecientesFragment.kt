@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +20,7 @@ class GastosrecientesFragment : Fragment() {
     private lateinit var gastosrecientesViewModel: GastosrecientesViewModel
     private lateinit var gastosAdapter:GastosAdapter
     private var gastoList:ArrayList<Gasto> = ArrayList()
+    private val gastoRepository = GastoRepository()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +39,17 @@ class GastosrecientesFragment : Fragment() {
 
         }
 
-        gastosAdapter=GastosAdapter(gastoList)
+        gastosAdapter=GastosAdapter(gastoList, deleteClicked = { gasto ->
+            gastoRepository.deleteGasto(gasto)
+            Toast.makeText(context,"Gasto eliminado!", Toast.LENGTH_LONG).show()
+
+            gastosrecientesViewModel.loadGastos()
+            gastosrecientesBinding.gastosRecyclerView.apply {
+                layoutManager=LinearLayoutManager(this@GastosrecientesFragment.requireContext())
+                adapter=gastosAdapter
+                setHasFixedSize(false)
+            }
+        })
         gastosrecientesBinding.gastosRecyclerView.apply {
             layoutManager=LinearLayoutManager(this@GastosrecientesFragment.requireContext())
             adapter=gastosAdapter

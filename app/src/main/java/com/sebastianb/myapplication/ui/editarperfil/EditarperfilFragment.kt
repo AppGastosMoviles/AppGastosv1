@@ -10,11 +10,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.sebastianb.myapplication.databinding.FragmentEditarperfilBinding
+import com.sebastianb.myapplication.model.User
 
 
 class EditarperfilFragment : Fragment() {
     private lateinit var editarperfilBinding: FragmentEditarperfilBinding
     private lateinit var editarperfilViewModel: EditarperfilViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,17 +28,23 @@ class EditarperfilFragment : Fragment() {
         editarperfilViewModel.errorMsg.observe(viewLifecycleOwner) { msg ->
             showErrorMessage(msg)
 
+
         }
+        editarperfilViewModel.registerSuccess.observe(viewLifecycleOwner) {
+            goToLogin()
+
+        }
+
         with(editarperfilBinding) {
             guardarButton.setOnClickListener {
                 editarperfilViewModel.validateFields(
                     phoneEditText.text.toString(),
-                    nameEditText.text.toString(),
-                    emailEditText.text.toString(),
-                    passwordEditText.text.toString(),
+                    nameEditText.text.toString()
                 )
 
             }
+
+
             return editarperfilBinding.root
         }
     }
@@ -47,8 +55,7 @@ class EditarperfilFragment : Fragment() {
     private fun showErrorMessage(msg: String?) {
         Toast.makeText(requireActivity(), msg, Toast.LENGTH_SHORT).show()
     }
-    fun goToLogin(next: Int) {
-        if (next ==6)
+    fun goToLogin() {
             findNavController().navigate(EditarperfilFragmentDirections.actionEditarperfilFragmentToNavigationCuenta())
 
     }

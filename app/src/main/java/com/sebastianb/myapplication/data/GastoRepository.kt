@@ -46,7 +46,7 @@ class GastoRepository {
 
     }
 
-    suspend fun deleteGasto(gasto: Gasto):ResourceRemote<Boolean> {
+     fun deleteGasto(gasto: Gasto):ResourceRemote<Boolean> {
         return try {
             val docRef = auth.uid?.let{ db.collection("users").document(it).collection("gastos") }
             gasto.id?.let { docRef?.document(it)?.delete() }

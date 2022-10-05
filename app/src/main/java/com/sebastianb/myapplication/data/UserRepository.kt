@@ -2,14 +2,16 @@ package com.sebastianb.myapplication.data
 
 import android.util.Log
 import com.google.firebase.FirebaseNetworkException
-
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.sebastianb.myapplication.model.Gasto
 import com.sebastianb.myapplication.model.User
 import kotlinx.coroutines.tasks.await
 
@@ -60,9 +62,10 @@ class UserRepository {
         }
 
     }
+
     suspend fun loadUser(): ResourceRemote<QuerySnapshot?> {
         return try {
-            val result=auth.uid?.let { db.collection("users").get().await() }
+            val result = auth.uid?.let { db.collection("users").get().await() }
             ResourceRemote.Succes(data = result)
         } catch (e: FirebaseFirestoreException) {
             ResourceRemote.Error(message = e.localizedMessage)
@@ -72,8 +75,8 @@ class UserRepository {
 
     }
 
-    suspend fun logOutUser(){
-            val result=auth.signOut()
+    suspend fun logOutUser() {
+        val result = auth.signOut()
     }
 
 

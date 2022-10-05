@@ -18,11 +18,13 @@ import androidx.lifecycle.viewModelScope
 
 
 class GastosAdapter(
-    private val gastoList: ArrayList<Gasto>
+    private val gastoList: ArrayList<Gasto>,
+    private val deleteClicked : (Gasto)->Unit
 ) : RecyclerView.Adapter<GastosAdapter.GastoViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GastoViewHolder {
+
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.card_view_gasto_item, parent, false)
         return GastoViewHolder(view)
@@ -30,8 +32,7 @@ class GastosAdapter(
 
     override fun onBindViewHolder(holder: GastoViewHolder, position: Int) {
         val gasto = gastoList[position]
-        holder.bind(gasto)
-
+        holder.bind(gasto,deleteClicked)
 
     }
 
@@ -46,7 +47,7 @@ class GastosAdapter(
     class GastoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = CardViewGastoItemBinding.bind(itemView)
 
-        fun bind(gasto: Gasto) {
+        fun bind(gasto: Gasto,deleteClicked:(Gasto) -> Unit) {
 
             with(binding) {
                 descripcionTextView.text = "Descripción: "+gasto.description
@@ -54,7 +55,9 @@ class GastosAdapter(
                 establecimientoTextView.text = "Establecimiento: "+gasto.establishment
                 valorTextView.text = "valor: $"+gasto.amount.toString()
                 fechaTextView.text = gasto.date
-
+                eliminarButton.setOnClickListener {
+                    deleteClicked(gasto)
+                }
 
 
                /* if (gasto.category.toString() == "Alimentación") {
